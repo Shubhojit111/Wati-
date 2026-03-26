@@ -59,5 +59,3 @@ A high-fidelity, interactive, and responsive landing page for Wati, built with R
 ## 🚀 Live Demo
 
 https://your-project.vercel.app
-
-# Wati Landing Page Clone
