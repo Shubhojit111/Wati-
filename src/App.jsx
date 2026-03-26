@@ -1,16 +1,18 @@
 import React from "react";
-import TrustedBy from "./components/TrustedBy";
-import CoreFeatures from "./components/CoreFeatures";
-import AIAgents from "./components/AIAgents";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import SolutionsSection from "./components/SolutionsSection";
-import StateSection from "./components/StateSection";
-import TestimonialSection from "./components/TestimonialSection";
-import PricingSection from "./components/Pricing";
-import Integrations from "./components/Integrations";
-import ReviewSection from "./components/ReviewSection";
+import TrustedBy from "./pages/TrustedBy";
+import CoreFeatures from "./pages/CoreFeatures";
+import AIAgents from "./pages/AIAgents";
+
+import Hero from "./pages/Hero";
+import Features from "./pages/Features";
+import SolutionsSection from "./pages/SolutionsSection";
+import StateSection from "./pages/StateSection";
+import TestimonialSection from "./pages/TestimonialSection";
+import PricingSection from "./pages/Pricing";
+import Integrations from "./pages/Integrations";
+import ReviewSection from "./pages/ReviewSection";
+
+import Navbar from "./pages/Navbar";
 
 const App = () => {
   return (

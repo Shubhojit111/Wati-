@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Info } from "lucide-react";
-import WatiButton from "./WatiButton";
+import WatiButton from "../components/WatiButton";
 
 const pricingData = [
   {

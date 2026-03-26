@@ -1,6 +1,12 @@
-import React from 'react';
-import { MessageCircle, Facebook, Instagram, MessageSquare, Send } from 'lucide-react';
-import FloatingOrbit from './Pulse';
+import React from "react";
+import {
+  MessageCircle,
+  Facebook,
+  Instagram,
+  MessageSquare,
+  Send,
+} from "lucide-react";
+import FloatingOrbit from "../components/Pulse";
 
 const CoreFeatures = () => {
   return (
@@ -12,9 +18,9 @@ const CoreFeatures = () => {
             Conversations everywhere.
           </h2>
           <p className="text-xl text-gray-600  leading-relaxed">
-            Start with WhatsApp and naturally extend to every channel your customers love. 
-            Manage website chat, Instagram, Facebook, SMS, calls and other social 
-            channels from one unified inbox.
+            Start with WhatsApp and naturally extend to every channel your
+            customers love. Manage website chat, Instagram, Facebook, SMS, calls
+            and other social channels from one unified inbox.
           </p>
         </div>
 
