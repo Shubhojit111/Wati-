@@ -17,16 +17,16 @@ const App = () => {
   return (
     <div className="min-h-screen px-34 font-['Inter',sans-serif] text-black bg-white">
       <Navbar />
-      {/* <Hero /> */}
-      {/* <Features /> */}
-      {/* <TrustedBy /> */}
-      {/* <CoreFeatures /> */}
+      <Hero />
+      <Features />
+      <TrustedBy />
+      <CoreFeatures />
       <AIAgents />
       <SolutionsSection />
+      <Integrations />
       <StateSection />
       <TestimonialSection />
       <PricingSection />
-      <Integrations />
       <ReviewSection />
     </div>
   );
