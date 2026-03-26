@@ -1,6 +1,7 @@
+import WatiButton from './WatiButton';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import React from 'react';
-import { CheckCircle2, ArrowRight, BadgePercent, CalendarDays, BookOpen, Star, Calendar } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { BadgePercent, CalendarDays, BookOpen, Star, Calendar } from 'lucide-react';
 
 export default function MarketingSales({ data }) {
   const { badgeText, title, features, stats, buttonText } = data;
@@ -148,11 +149,7 @@ export default function MarketingSales({ data }) {
 
         {/* Button */}
         <div>
-          <button className="relative px-6 py-3 font-bold text-black bg-white rounded-xl border-2 border-black group transition-all duration-200">
-            {/* Shadow background */}
-            <div className="absolute inset-0 translate-x-1.5 translate-y-1.5 bg-[#ECA0FE] rounded-xl -z-10 transition-all duration-200 group-hover:translate-x-0 group-hover:translate-y-0" />
-            <span className="relative z-10">{buttonText}</span>
-          </button>
+          <WatiButton text={buttonText} bgColor="#ECA0FE" />
         </div>
       </div>
     </div>
