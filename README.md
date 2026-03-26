@@ -1,16 +1,63 @@
-# React + Vite
+# Wati Landing Page Re-imagined
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity, interactive, and responsive landing page for Wati, built with React, Tailwind CSS, and Framer Motion. This project focuses on premium UI/UX, smooth animations, and pixel-perfect design.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Dynamic Navigation & Hero**: Fixed navbar with smooth transitions and a modern hero section.
+- **AI Agents Section**: Showcasing intelligent automation with clean, interactive cards.
+- **Solutions Grid**: Specialized layouts for Marketing, Sales, and Support workflows.
+- **Interactive Testimonials**: Native horizontal scroll with snap-center functionality and custom cursor interactions.
+- **Premium Pricing Section**:
+  - Growth, Pro, and Business plans with themed borders and "solid shadow" aesthetics.
+  - Interactive Annual/Monthly billing toggle with spring-based animations.
+- **Animated Integrations**:
+  - Custom SVG curvy paths that draw dynamically when scrolling into view.
+  - Unified coordinate system ensuring lines connect precisely to integration icons with a 2px gap.
+  - Custom-drawn Wati speech bubble center logo.
+- **High-Fidelity Review Section**:
+  - Custom-shaped G2 badges (Leader, Regional Leader, Best Usability, Best Support).
+  - Platform-specific review cards (Product Hunt, Capterra, G2, Shopify, Trustpilot) with soft shadows and persistent star ratings.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React (Vite)](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Design System**: Custom system focusing on vibrant colors, glassmorphism, and premium shadows.
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Shubhojit111/Wati-.git
+   cd Wati-
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
+
+## 🎥 Highlights
+
+- **Scroll-triggered SVG Animations**: The Integrations section uses `useInView` to trigger drawing paths.
+- **Native Scrolling UX**: Optimized horizontal scrolling for testimonials without sacrificing aesthetics.
+- **Pixel-Perfect Spacing**: Fine-tuned layout coordinates for consistent alignment across all sections.
+
+## 🚀 Live Demo
+
+https://your-project.vercel.app
+
+# Wati Landing Page Clone
