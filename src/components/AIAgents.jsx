@@ -265,10 +265,10 @@ const AIAgents = () => {
            
            <div className="text-center border-t border-pink-200/30 pt-8">
               <h3 className="text-2xl font-semibold text-[#1a1a1a] mb-3">Inbound Intelligence Agent</h3>
-              <p className="text-gray-500 text-base font-bold mb-10 leading-relaxed max-w-sm mx-auto">
+              <p className="text-gray-500 text-base font-bold mb-6 leading-relaxed max-w-sm mx-auto">
                  Build agents that qualify leads, uncover intent, and close sales on chat - all in no time.
               </p>
-              <button className="mx-auto px-12 py-4 bg-transparent border-2 border-black text-black font-black text-sm rounded-2xl hover:bg-white hover:text-black transition-all shadow-[4px_4px_0px_black] active:translate-y-1 active:shadow-none uppercase tracking-widest cursor-pointer">
+              <button className="mx-auto px-5 py-3 bg-transparent border-2 font-bold text-sm rounded-xl hover:bg-white  transition-all uppercase  cursor-pointer">
                  Build Agent
               </button>
            </div>
@@ -282,10 +282,10 @@ const AIAgents = () => {
            
            <div className="text-center border-t border-blue-200/30 pt-8">
               <h3 className="text-2xl font-semibold text-[#1a1a1a] mb-3">AI Support Agent</h3>
-              <p className="text-gray-500 text-base font-bold mb-10 leading-relaxed max-w-sm mx-auto">
+              <p className="text-gray-500 text-base font-bold mb-6 leading-relaxed max-w-sm mx-auto">
                  Train your AI support agent in minutes, and let it deflect up to 60% of customer queries.
               </p>
-              <button className="mx-auto px-12 py-4 bg-transparent border-2 border-black text-black font-black text-sm rounded-2xl hover:bg-white hover:text-black transition-all shadow-[4px_4px_0px_black] active:translate-y-1 active:shadow-none uppercase tracking-widest cursor-pointer">
+              <button className="mx-auto px-5 py-3 bg-transparent border-2 font-bold text-sm rounded-xl hover:bg-white  transition-all uppercase  cursor-pointer">
                  Build Agent
               </button>
            </div>

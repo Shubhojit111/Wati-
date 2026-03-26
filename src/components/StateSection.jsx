@@ -27,7 +27,11 @@ export default function StatsSection() {
           <div className="flex flex-col md:flex-row items-center justify-between w-full mx-auto">
             {states.map((stat, i) => (
               <React.Fragment key={i}>
-                <div className="flex flex-col items-start text-left px-8 py-4 w-full md:w-auto min-w-[200px]">
+
+                {i < states.length && (
+                  <div className="hidden md:block w-px h-24 bg-[#ECA0FE]/90" />
+                )}
+                <div className="flex flex-col items-start text-left py-4 w-full md:w-auto min-w-[200px]">
                   {stat.isCompliance ? (
                     <div className="flex items-center gap-2 mb-4 h-[60px]">
                       <div className="bg-[#4135BF] rounded-full p-2 text-white">
@@ -49,9 +53,7 @@ export default function StatsSection() {
                     {stat.label}
                   </span>
                 </div>
-                {i < states.length - 1 && (
-                  <div className="hidden md:block w-px h-24 bg-[#ECA0FE]/90" />
-                )}
+                
               </React.Fragment>
             ))}
           </div>

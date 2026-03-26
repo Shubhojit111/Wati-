@@ -1,5 +1,4 @@
 import React from "react";
-import { MessageSquare, ArrowRight } from "lucide-react";
 import TrustedBy from "./components/TrustedBy";
 import CoreFeatures from "./components/CoreFeatures";
 import AIAgents from "./components/AIAgents";
