@@ -1,9 +1,17 @@
 import WatiButton from './WatiButton';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import React from 'react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function MarketingSupport({ data }) {
   const { badgeText, title, features, stats, buttonText } = data;
+  const containerRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const tagBadgeRef = useRef(null);
 
   const TagBadge = ({ text, bgColor }) => {
     return (
@@ -18,6 +26,8 @@ export default function MarketingSupport({ data }) {
         text-xs
         shadow-[3px_3px_0px_black]
         inline-block
+        tag-badge
+        opacity-0
       `}
         style={{ backgroundColor: bgColor }}
       >
@@ -26,8 +36,73 @@ export default function MarketingSupport({ data }) {
     );
   };
 
+  useGSAP(
+    () => {
+      // Text images — slower entrance
+      const images = gsap.utils.toArray('.support-image');
+      images.forEach((img, i) => {
+        gsap.fromTo(
+          img,
+          { x: i % 2 === 0 ? -100 : 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+            onComplete: () => {
+              gsap.to(img, {
+                y: 5,
+                duration: 1.8,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+              });
+            },
+          },
+        );
+      });
+
+      // Tag badges — bottom to present, stagger + yoyo float
+      const badges = gsap.utils.toArray('.tag-badge');
+      gsap.fromTo(
+        badges,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: tagBadgeRef.current,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse',
+          },
+          onComplete: () => {
+            badges.forEach((b, i) => {
+              gsap.to(b, {
+                y: -6,
+                duration: 1.3 + i * 0.15,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+                delay: i * 0.2,
+              });
+            });
+          },
+        },
+      );
+    },
+    { scope: containerRef },
+  );
+
   return (
-    <div className="bg-linear-to-b from-[#FEF6DB] via-[#fffef2] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div ref={containerRef} className="bg-linear-to-b from-[#FEF6DB] via-[#fffef2] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Text Content */}
       <div className="flex-1 flex flex-col justify-start items-start w-1/2 ">
@@ -91,9 +166,8 @@ export default function MarketingSupport({ data }) {
             ))}
           </div>
 
-
           {/* Ripple Circles Graphic */}
-          <div className="w-full h-fit flex items-center justify-center">
+          <div ref={imageContainerRef} className="w-full h-fit flex items-center justify-center">
             <div className="relative w-[300px] h-[300px] flex items-center justify-center">
 
               {/* Outer Ring */}
@@ -109,22 +183,22 @@ export default function MarketingSupport({ data }) {
               <div className="absolute w-[150px] h-[150px] rounded-full bg-[#e9d056]"></div>
 
               <div className="absolute top-5 -left-10 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text1.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text1.webp" alt="" className="support-image opacity-0" />
               </div>
 
               <div className="absolute top-20 left-0 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" className="support-image opacity-0" />
               </div>
 
               <div className="absolute top-46 left-0 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" className="support-image opacity-0" />
               </div>
 
             </div>
           </div>
 
 
-          <div className="flex gap-6 p-6">
+          <div ref={tagBadgeRef} className="flex gap-6 p-6">
             <TagBadge text="Multilingual" bgColor="#6FD3FF" />
             <TagBadge text="Contextual" bgColor="#FFE66D" />
             <TagBadge text="Empathetic" bgColor="#E8A1E6" />

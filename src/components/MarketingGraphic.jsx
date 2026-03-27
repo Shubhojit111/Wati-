@@ -1,12 +1,56 @@
 import WatiButton from './WatiButton';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import React from 'react';
+import React, { useRef } from 'react';
 import Assets from '../assets/Assets';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 export default function MarketingGraphic({ data }) {
   const { badgeText, title, features, stats, buttonText, type } = data;
+  const containerRef = useRef(null);
+  const imageContainerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const images = gsap.utils.toArray('.graphic-image');
+      images.forEach((img, i) => {
+        gsap.fromTo(
+          img,
+          {
+            x: i % 2 === 0 ? -100 : 100,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: img,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+            onComplete: () => {
+              gsap.to(img, {
+                y: 5,
+                duration: 1.8,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut',
+              });
+            },
+          },
+        );
+      });
+    },
+    { scope: containerRef },
+  );
 
   return (
-    <div className="bg-linear-to-b from-[#f1faff] via-[#f1faff] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div ref={containerRef} className="bg-linear-to-b from-[#f1faff] via-[#f1faff] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Text Content */}
       <div className="flex-1 flex flex-col justify-start items-start w-1/2 ">
@@ -76,7 +120,7 @@ export default function MarketingGraphic({ data }) {
       </div>
 
       {/* Ripple Circles Graphic */}
-      <div className="w-full h-fit flex items-center justify-center">
+      <div ref={imageContainerRef} className="w-full h-fit flex items-center justify-center">
         <div className="relative w-[300px] h-[300px] flex items-center justify-center">
 
           {/* Outer Ring */}
@@ -93,11 +137,11 @@ export default function MarketingGraphic({ data }) {
 
 
           <div className="absolute top-16 -left-10 w-[400px]">
-            <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-marketing-animate-text1.webp" alt="" />
+            <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-marketing-animate-text1.webp" alt="" className="graphic-image opacity-0" />
           </div>
 
           <div className="absolute top-34 left-0 w-[400px]">
-            <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-marketing-animate-text2.webp" alt="" />
+            <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-marketing-animate-text2.webp" alt="" className="graphic-image opacity-0" />
           </div>
 
         </div>
@@ -108,7 +152,3 @@ export default function MarketingGraphic({ data }) {
     </div>
   );
 }
-
-
-
-

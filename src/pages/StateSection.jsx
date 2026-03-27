@@ -11,7 +11,7 @@ const states = [
 
 export default function StatsSection() {
   return (
-    <div className="px-6 py-20 bg-white">
+    <div className=" py-20 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Rounded Container */}
         <div className="bg-linear-to-b from-[#ffffff] via-[#f9edfa] to-[#f3e1f5] rounded-[48px] px-10 py-20 text-center relative overflow-hidden">

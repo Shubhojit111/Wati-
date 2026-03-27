@@ -23,6 +23,8 @@ import TestimonialPerson3 from "../assets/images/testimonial-person3.webp";
 
 import WatiForMarketing from "../assets/images/WatiForMarketing.webp";
 
+import IntegrationImage from "../assets/images/Integration.png";
+
 const Assets = {
     
     // images
@@ -42,6 +44,7 @@ const Assets = {
     TestimonialPerson2,
     TestimonialPerson3,
     WatiForMarketing,
+    IntegrationImage,
     
     // videos
     MarketingVideo,

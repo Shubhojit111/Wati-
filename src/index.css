@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+
+
 @layer base {
   button {
     cursor: pointer;
