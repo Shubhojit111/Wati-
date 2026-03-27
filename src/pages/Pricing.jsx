@@ -1,7 +1,11 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef } from "react";
 import { Info } from "lucide-react";
 import WatiButton from "../components/WatiButton";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const pricingData = [
   {
@@ -169,7 +173,7 @@ const PricingCard = ({ plan, billing }) => {
 
   return (
     <div
-      className={`relative flex flex-col w-full rounded-[24px] border-2 bg-white p-6 md:p-8 transition-all duration-300 hover:shadow-xl ${cardBorderColor} ${cardBgColor}`}
+      className={`pricing-card opacity-0 relative flex flex-col w-full rounded-[24px] border-2 bg-white p-6 md:p-8 transition-all duration-300 hover:shadow-xl ${cardBorderColor} ${cardBgColor}`}
     >
       {highlight && (
         <div className="absolute top-0 right-0 bg-[#f8ff00] text-[#0f0523] text-[12px] font-bold px-4 py-1.5 rounded-bl-[16px] rounded-tr-[22px] border-l border-b border-[#00e676] z-10">
@@ -283,9 +287,36 @@ const PricingCard = ({ plan, billing }) => {
 
 export default function PricingSection() {
   const [billing, setBilling] = useState("annual");
+  const sectionRef = useRef(null);
+  const toggleRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.fromTo('.pricing-card', 
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1, 
+        y: 0, 
+        duration: 0.6, 
+        stagger: 0.15, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%"
+        }
+      }
+    );
+  }, { scope: sectionRef });
+
+  useGSAP(() => {
+    gsap.to(toggleRef.current, {
+      x: billing === "annual" ? 0 : 105,
+      duration: 0.4,
+      ease: "power2.out"
+    });
+  }, { dependencies: [billing] });
 
   return (
-    <section className="bg-white py-20 px-4 md:px-6">
+    <section ref={sectionRef} className="bg-white py-20 px-4 md:px-6">
       <div className="max-w-[1240px] mx-auto">
         {/* Header */}
         <div className="text-center mb-16 relative">
@@ -319,14 +350,9 @@ export default function PricingSection() {
 
             {/* Toggle */}
             <div className="bg-[#dcfce7] rounded-full p-1.5 flex items-center relative w-[220px]">
-              <motion.div
-                className="absolute bg-[#00e676] rounded-full h-[calc(100%-12px)] top-[6px]"
-                initial={false}
-                animate={{
-                  width: billing === "annual" ? "105px" : "105px",
-                  x: billing === "annual" ? 0 : 105,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              <div
+                ref={toggleRef}
+                className="absolute bg-[#00e676] rounded-full h-[calc(100%-12px)] top-[6px] w-[105px]"
               />
               <button
                 onClick={() => setBilling("annual")}

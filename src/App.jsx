@@ -14,6 +14,7 @@ import ReviewSection from "./pages/ReviewSection";
 
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
       <PricingSection />
       <ReviewSection />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

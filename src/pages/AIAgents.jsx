@@ -258,7 +258,7 @@ const AIAgents = () => {
       <div className="mx-auto px-24 grid md:grid-cols-2 gap-6">
         
         {/* Inbound Agent Card */}
-        <div className="bg-[#FFF0F9] border-2 border-[#e8c6da] rounded-[48px] p-8 md:p-14 flex flex-col h-full shadow-sm">
+        <div className="bg-linear-to-b from-[#ffffff] via-[#FDF4FF] to-[#FDECFF] border-2 border-[#e8c6da] rounded-[48px] p-8 md:p-14 flex flex-col h-full shadow-sm">
            <div className="flex-1 mb-16">
               <InboundAgentVisual />
            </div>
@@ -275,7 +275,7 @@ const AIAgents = () => {
         </div>
 
         {/* Support Agent Card */}
-        <div className="bg-[#F0F8FF] border-2 border-[#80ccee] rounded-[48px] p-8 md:p-14 flex flex-col h-full shadow-sm">
+        <div className="bg-linear-to-b from-[#ffffff] via-[#F3FAFF] to-[#E3F5FF] border-2 border-[#80ccee] rounded-[48px] p-8 md:p-14 flex flex-col h-full shadow-sm">
            <div className="flex-1 mb-16">
               <SupportAgentVisual />
            </div>

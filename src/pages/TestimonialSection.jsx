@@ -1,8 +1,12 @@
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import TestimonialCard from "../components/TestimonialCard";
 import Assets from "../assets/Assets";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const testimonialData = [
   {
@@ -41,6 +45,26 @@ const testimonialData = [
 
 export default function TestimonialSection() {
   const scrollContainerRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      sectionRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
+  }, { scope: sectionRef });
+
+
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
@@ -56,7 +80,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="py-24 overflow-hidden bg-white">
+    <section ref={sectionRef} className="py-24 overflow-hidden bg-white opacity-0">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
         <h2 className="text-[40px] md:text-[55px] text-center leading-[1.15] font-bold text-[#0f0523] mb-12 md:mb-16 tracking-tight">
           High-growth teams rely on Wati to build lasting customer relationships

@@ -1,5 +1,9 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const leftIcons = [
   { name: 'PayTabs', logo: 'https://www.paytabs.com/wp-content/uploads/2021/05/logo.png', y: 0 },
@@ -23,7 +27,7 @@ const rightIcons = [
   { name: 'Google Ads', logo: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg', y: 480 },
 ];
 
-const AnimatedLine = ({ isLeft, y, inView }) => {
+const AnimatedLine = ({ isLeft, y }) => {
   // SVG coordinates: 0 to 1000 range
   // Left icon edge is at ~100. Right icon edge is at ~900.
   // Add 2px gap: 102 (left), 898 (right)
@@ -36,22 +40,84 @@ const AnimatedLine = ({ isLeft, y, inView }) => {
   const path = `M ${startX} ${y} C ${midX} ${y}, ${midX} ${centerY}, ${endX} ${centerY}`;
 
   return (
-    <motion.path
+    <path
+      className="integration-line"
       d={path}
       fill="none"
       stroke="url(#lineGradient)"
       strokeWidth="4"
       strokeLinecap="round"
-      initial={{ pathLength: 0, opacity: 0 }}
-      animate={inView ? { pathLength: 1, opacity: 0.8 } : { pathLength: 0, opacity: 0 }}
-      transition={{ duration: 3, ease: "easeInOut", delay: isLeft ? 0.2 : 0.4 }}
+      opacity="0.8"
     />
   );
 };
 
 export default function Integrations() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+
+  useGSAP(() => {
+    // SVG lines
+    gsap.fromTo('.integration-line',
+      { strokeDasharray: 1000, strokeDashoffset: 1000, opacity: 0 },
+      {
+        strokeDashoffset: 0,
+        opacity: 0.8,
+        duration: 2,
+        ease: "power1.inOut",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+        }
+      }
+    );
+
+    // Center icon
+    gsap.fromTo('.center-icon',
+      { scale: 0 },
+      {
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+        }
+      }
+    );
+
+    // Left icons
+    gsap.fromTo('.left-icon',
+      { opacity: 0, x: -30 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+        }
+      }
+    );
+
+    // Right icons
+    gsap.fromTo('.right-icon',
+      { opacity: 0, x: 30 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+        }
+      }
+    );
+  }, { scope: sectionRef });
 
   return (
     <section ref={sectionRef} className="py-24 bg-white overflow-hidden">
@@ -80,20 +146,17 @@ export default function Integrations() {
             </defs>
             
             {leftIcons.map((icon, idx) => (
-              <AnimatedLine key={`left-line-${idx}`} isLeft={true} y={icon.y} inView={isInView} />
+              <AnimatedLine key={`left-line-${idx}`} isLeft={true} y={icon.y} />
             ))}
             {rightIcons.map((icon, idx) => (
-              <AnimatedLine key={`right-line-${idx}`} isLeft={false} y={icon.y} inView={isInView} />
+              <AnimatedLine key={`right-line-${idx}`} isLeft={false} y={icon.y} />
             ))}
           </svg>
 
           {/* Center Icon - Custom Speech Bubble */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-            <motion.div 
-              initial={{ scale: 0, shadow: "none" }}
-              animate={isInView ? { scale: 1 } : {}}
-              transition={{ type: "spring", damping: 15, stiffness: 100, delay: 1.2 }}
-              className="relative w-36 h-28"
+            <div 
+              className="relative w-36 h-28 center-icon"
             >
                <svg viewBox="0 0 120 100" className="w-full h-full drop-shadow-2xl">
                   <path 
@@ -105,18 +168,15 @@ export default function Integrations() {
                   <path d="M25 25 H95" stroke="#0f0523" strokeWidth="5" strokeLinecap="round" />
                   <path d="M25 45 H75" stroke="#0f0523" strokeWidth="5" strokeLinecap="round" />
                </svg>
-            </motion.div>
+            </div>
           </div>
 
           {/* Integration Icons - Placed exactly at startX/startY */}
           {/* Left Column */}
           {leftIcons.map((icon, idx) => (
-            <motion.div
+            <div
               key={`icon-left-${idx}`}
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.1 + idx * 0.08 }}
-              className="absolute h-[50px] w-[100px] flex items-center justify-end pr-2"
+              className="absolute h-[50px] w-[100px] flex items-center justify-end pr-2 left-icon opacity-0"
               style={{ 
                 top: `${(icon.y / 500) * 100}%`, 
                 left: '0%', 
@@ -126,17 +186,14 @@ export default function Integrations() {
               <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-lg">
                 <img src={icon.logo} alt={icon.name} className="h-6 w-auto object-contain" />
               </div>
-            </motion.div>
+            </div>
           ))}
 
           {/* Right Column */}
           {rightIcons.map((icon, idx) => (
-            <motion.div
+            <div
               key={`icon-right-${idx}`}
-              initial={{ opacity: 0, x: 30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.1 + idx * 0.08 }}
-              className="absolute h-[50px] w-[100px] flex items-center justify-start pl-2"
+              className="absolute h-[50px] w-[100px] flex items-center justify-start pl-2 right-icon opacity-0"
               style={{ 
                 top: `${(icon.y / 500) * 100}%`, 
                 right: '0%', 
@@ -146,7 +203,7 @@ export default function Integrations() {
               <div className="bg-white p-2 rounded-xl border border-gray-100 shadow-lg">
                 <img src={icon.logo} alt={icon.name} className="h-6 w-auto object-contain" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

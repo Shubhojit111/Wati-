@@ -1,13 +1,36 @@
 import WatiButton from './WatiButton';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import React from 'react';
-import { BadgePercent, CalendarDays, BookOpen, Star, Calendar } from 'lucide-react';
+import { ArrowRight, CheckCircle2, BadgePercent, CalendarDays, BookOpen, Star, Calendar } from 'lucide-react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function MarketingSales({ data }) {
   const { badgeText, title, features, stats, buttonText } = data;
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.fromTo(
+      '.sales-image',
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+        },
+      }
+    );
+  }, { scope: containerRef });
 
   return (
-    <div className="bg-linear-to-b from-[#FDECFF] via-[#fef0ff] to-[#ffffff] rounded-[40px] p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div ref={containerRef} className="bg-linear-to-b from-[#FDECFF] via-[#fef0ff] to-[#ffffff] rounded-[40px] p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Custom Graphic (Demo based on type) */}
       <div className="flex-1 relative flex items-center min-h-[500px]">
@@ -90,13 +113,13 @@ export default function MarketingSales({ data }) {
               <div className="absolute w-[150px] h-[150px] rounded-full bg-[#d361f9]"></div>
 
               <div className="absolute top-5 -left-10 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text1.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text1.webp" alt="" className="sales-image opacity-0" />
               </div>
               <div className="absolute top-20 left-0 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" className="sales-image opacity-0" />
               </div>
               <div className="absolute top-46 left-0 w-[400px]">
-                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" />
+                <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text2.webp" alt="" className="sales-image opacity-0" />
               </div>
             </div>
           </div>
