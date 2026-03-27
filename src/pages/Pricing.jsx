@@ -20,23 +20,32 @@ const pricingData = [
     themeColor: "blue",
     features: [
       {
-        text: "Zero-fee WhatsApp setup: Get Official WhatsApp API, Blue Tick Verification help",
+        point: "Zero-fee WhatsApp setup:",
+        text: "Get Official WhatsApp API, Blue Tick Verification help",
       },
       {
-        text: "Omnichannel inbox: WhatsApp Messages, WhatsApp Business Calling, FB, Instagram, QR code, widget, wa.me",
+        point: "Omnichannel inbox:",
+        text: "WhatsApp Messages, WhatsApp Business Calling, FB, Instagram, QR code, widget, wa.me",
       },
       {
-        text: "Standard promotions: Run multi-media campaigns, view open & read rates",
-      },
-      { text: "Acquire leads: Launch CTWA ads and capture leads on WhatsApp" },
-      {
-        text: "Team inbox staples: Assign, track, automate, follow ups, tag & report",
+        point: "Standard promotions:",
+        text: "Run multi-media campaigns, view open & read rates",
       },
       {
-        text: "E-Commerce tools: WhatsApp Catalog, Shopify abandon cart & order templates",
+        point: "Acquire leads:",
+        text: "Launch CTWA ads and capture leads on WhatsApp",
       },
       {
-        text: "24x5 Email Support: in English and Portuguese, with basic SLA coverage",
+        point: "Team inbox staples:",
+        text: "Assign, track, automate, follow ups, tag & report",
+      },
+      {
+        point: "E-Commerce tools:",
+        text: "WhatsApp Catalog, Shopify abandon cart & order templates",
+      },
+      {
+        point: "24x5 Email Support:",
+        text: "in English and Portuguese, with basic SLA coverage",
       },
     ],
     usage: [
@@ -61,27 +70,34 @@ const pricingData = [
     themeColor: "green",
     features: [
       {
-        text: "Auto-qualify leads: Advanced chatbots, forms, integrations & IG automation",
+        point: "Auto-qualify leads:",
+        text: "Advanced chatbots, forms, integrations & IG automation",
       },
       {
-        text: "Boost conversion: Smart retargeting, Carousel template & Catalog pay options",
+        point: "Boost conversion:",
+        text: "Smart retargeting, Carousel template & Catalog pay options",
       },
       {
-        text: "Optimize Campaigns: CTWA source tags, click tracking & engagement insights",
+        point: "Optimize Campaigns:",
+        text: "CTWA source tags, click tracking & engagement insights",
       },
       {
-        text: "AI Automation: Answer queries, collect information, send reminders & more",
+        point: "AI Automation:",
+        text: "Answer queries, collect information, send reminders & more",
         highlight: true,
         highlightColor: "bg-[#dcfce7]",
       },
       {
-        text: "Advanced team inbox: Teams, auto routing, and operator reports",
+        point: "Advanced team inbox:",
+        text: "Teams, auto routing, and operator reports",
       },
       {
-        text: "Drive Shopify sales: Campaign based on buyer data, Shopify/Gokwik checkout",
+        point: "Drive Shopify sales:",
+        text: "Campaign based on buyer data, Shopify/Gokwik checkout",
       },
       {
-        text: "24x7 Email & Chat Support: Standard SLAs to support your operations",
+        point: "24x7 Email & Chat Support:",
+        text: "Standard SLAs to support your operations",
       },
     ],
     usage: [
@@ -104,28 +120,35 @@ const pricingData = [
     themeColor: "purple",
     features: [
       {
-        text: "Scale effortlessly: Send 4k messages/min, get volume discounts & SMS fallback",
+        point: "Scale effortlessly:",
+        text: "Send 4k messages/min, get volume discounts & SMS fallback",
         badge: "Beta",
       },
       {
-        text: "G Official Google Partner: Asia's only Google Ads to WhatsApp Provider",
+        point: "G Official Google Partner:",
+        text: "Asia's only Google Ads to WhatsApp Provider",
         highlight: true,
         highlightColor: "bg-[#f3e8ff]",
       },
       {
-        text: "Best-in-class ROI: Optimize CTWA ads, track conversion, use WhatsApp Pay API",
+        point: "Best-in-class ROI:",
+        text: "Optimize CTWA ads, track conversion, use WhatsApp Pay API",
       },
       {
-        text: "Run teams smoothly: Multiple WhatsApp numbers & round-robin chat assignment",
+        point: "Run teams smoothly:",
+        text: "Multiple WhatsApp numbers & round-robin chat assignment",
       },
       {
-        text: "Dedicated Customer Success Manager for strategic recommendations",
+        point: "Dedicated Customer Success Manager",
+        text: "for strategic recommendations",
       },
       {
-        text: "Enhance privacy & compliance: Phone number masking, Roles & IP Whitelisting",
+        point: "Enhance privacy & compliance:",
+        text: "Phone number masking, Roles & IP Whitelisting",
       },
       {
-        text: "Priority 24x7 Email & Chat support, with access to paid TAM services",
+        point: "Priority 24x7 Email & Chat support,",
+        text: "with access to paid TAM services",
       },
     ],
     usage: [
@@ -234,33 +257,34 @@ const PricingCard = ({ plan, billing }) => {
           {features.map((feature, idx) => (
             <li
               key={idx}
-              className={`flex items-start gap-3 text-[14px] text-[#0f0523] leading-snug ${feature.highlight ? `p-2 rounded-lg ${feature.highlightColor} border border-dashed border-gray-300` : ""}`}
+              className={`flex items-start gap-3 text-[16px] text-[#0f0523] leading-snug ${feature.highlight ? `p-2 rounded-lg ${feature.highlightColor} border border-dashed border-gray-300` : ""}`}
             >
               <div className="mt-1 shrink-0 text-[#0f0523] text-[18px] leading-none">
                 •
               </div>
-              <span>
+              <p>
+                <span className="font-semibold">{feature.point}</span>{" "}
                 {feature.text}
                 {feature.badge && (
                   <span className="ml-1.5 px-1.5 py-0.5 bg-[#f3e8ff] text-[#9333ea] text-[10px] font-bold rounded uppercase">
                     {feature.badge}
                   </span>
                 )}
-              </span>
+              </p>
             </li>
           ))}
         </ul>
 
         {/* Usage Section */}
         <div className="pt-8 border-t border-gray-200 mb-8">
-          <h4 className="text-[14px] font-bold text-[#0f0523] mb-4 uppercase tracking-wider">
+          <h4 className="text-[16px] font-bold text-[#0f0523] mb-4 uppercase tracking-wider">
             Usage
           </h4>
-          <ul className="space-y-3">
+          <ul className="flex flex-col gap-2">
             {usage.map((item, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-3 text-[14px] text-[#4a4a4a]"
+                className="flex items-start gap-3 text-[16px] text-[#4a4a4a]"
               >
                 <div className="mt-1 shrink-0">•</div>
                 <span className="flex items-center gap-1.5">
