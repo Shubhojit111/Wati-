@@ -1,11 +1,12 @@
 import WatiButton from './WatiButton';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import React from 'react';
+import Assets from '../assets/Assets';
 export default function MarketingGraphic({ data }) {
   const { badgeText, title, features, stats, buttonText, type } = data;
 
   return (
-    <div className="bg-[#EBF7FC] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div className="bg-linear-to-b from-[#f1faff] via-[#f1faff] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Text Content */}
       <div className="flex-1 flex flex-col justify-start items-start w-1/2 ">
@@ -71,7 +72,7 @@ export default function MarketingGraphic({ data }) {
 
       {/* Main Ad Card Container */}
       <div className="">
-        <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-marketing-img1.webp" alt="" className='w-[350px] h-[350px] object-cover' />
+        <img src={Assets.WatiForMarketing} alt="" className='w-[350px] h-[350px] object-cover' />
       </div>
 
       {/* Ripple Circles Graphic */}

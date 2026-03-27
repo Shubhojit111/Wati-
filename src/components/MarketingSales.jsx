@@ -7,7 +7,7 @@ export default function MarketingSales({ data }) {
   const { badgeText, title, features, stats, buttonText } = data;
 
   return (
-    <div className="bg-[#FCF5FF] rounded-[40px] p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div className="bg-linear-to-b from-[#FDECFF] via-[#fef0ff] to-[#ffffff] rounded-[40px] p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Custom Graphic (Demo based on type) */}
       <div className="flex-1 relative flex items-center min-h-[500px]">

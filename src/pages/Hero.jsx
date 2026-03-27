@@ -8,6 +8,7 @@ const wordPairs = [
   { top: "WhatsApp", bottom: "growth" },
   { top: "conversational", bottom: "growth" },
   { top: "business", bottom: "messaging" },
+  
 ];
 
 const Hero = () => {
@@ -88,6 +89,7 @@ const Hero = () => {
             <span>platform</span>
           </div>
         </h1>
+        
 
         {/* SUBTEXT */}
         <p className="mt-16 text-gray-700 text-[20px] font-medium  mx-auto leading-relaxed">

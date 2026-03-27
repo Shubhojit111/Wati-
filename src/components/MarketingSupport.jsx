@@ -27,7 +27,7 @@ export default function MarketingSupport({ data }) {
   };
 
   return (
-    <div className="bg-[#FFFDF2] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
+    <div className="bg-linear-to-b from-[#FEF6DB] via-[#fffef2] to-[#ffffff] rounded-[40px]  p-12 flex flex-col lg:flex-row gap-12 w-full max-w-[1240px] mx-auto overflow-hidden">
 
       {/* LEFT SIDE: Text Content */}
       <div className="flex-1 flex flex-col justify-start items-start w-1/2 ">
@@ -81,12 +81,12 @@ export default function MarketingSupport({ data }) {
 
           {/* Top Pills */}
           <div className="flex items-center gap-2">
-            {['ENGAGE', 'QUALIFY', 'ASSIGN', 'WIN'].map((lbl, i) => (
+            {['INQUIRY', 'RESPOND', 'ESCALATE', 'RESOLVE'].map((lbl, i) => (
               <React.Fragment key={i}>
-                <div className="bg-[#F0A8F8] text-white text-[12px] font-bold px-4 py-1.5 rounded-full tracking-wide">
+                <div className="bg-[#FFE96E] text-black text-[12px] font-medium px-4 py-1.5 rounded-full tracking-wide">
                   {lbl}
                 </div>
-                {i < 3 && <ArrowRight className="w-4 h-4 text-[#F0A8F8]" />}
+                {i < 3 && <ArrowRight className="w-4 h-4 text-[#FFE96E]" />}
               </React.Fragment>
             ))}
           </div>
@@ -97,16 +97,16 @@ export default function MarketingSupport({ data }) {
             <div className="relative w-[300px] h-[300px] flex items-center justify-center">
 
               {/* Outer Ring */}
-              <div className="absolute w-[300px] h-[300px] rounded-full bg-[#f4cbfa]"></div>
+              <div className="absolute w-[300px] h-[300px] rounded-full bg-[#FEF5CD]"></div>
 
               {/* Second Ring */}
-              <div className="absolute w-[250px] h-[250px] rounded-full bg-[#eaaef9]"></div>
+              <div className="absolute w-[250px] h-[250px] rounded-full bg-[#f9ecad]"></div>
 
               {/* Third Ring */}
-              <div className="absolute w-[200px] h-[200px] rounded-full bg-[#df8bf9]"></div>
+              <div className="absolute w-[200px] h-[200px] rounded-full bg-[#f4de7d]"></div>
 
               {/* Center */}
-              <div className="absolute w-[150px] h-[150px] rounded-full bg-[#d361f9]"></div>
+              <div className="absolute w-[150px] h-[150px] rounded-full bg-[#e9d056]"></div>
 
               <div className="absolute top-5 -left-10 w-[400px]">
                 <img src="https://www.wati.io/wp-content/uploads/2025/08/wati-for-sales-animate-text1.webp" alt="" />

@@ -10,7 +10,7 @@ const TrustedBy = () => {
   ];
 
   return (
-    <section className="py-20 bg-white border-b border-gray-100">
+    <section className="py-40 bg-white border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-[55px] font-bold text-[#1a1a1a] mb-12 leading-[1.2]">
           Loved and trusted by 

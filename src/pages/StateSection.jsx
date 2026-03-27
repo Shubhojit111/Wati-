@@ -1,41 +1,40 @@
-import React from 'react'
-import { ShieldCheck, Lock, CheckCircle } from 'lucide-react';
+import React from "react";
+import { ShieldCheck, Lock, CheckCircle } from "lucide-react";
+import Assets from "../assets/Assets";
 
 const states = [
-  { value: '10B', label: 'Messages Processed' },
-  { value: '99.9%', label: 'Historical Uptime' },
-  { isCompliance: true, label: 'Compliant' },
-  { value: '100+', label: 'Countries' }
+  { value: "10B", label: "Messages Processed" },
+  { value: "99.9%", label: "Historical Uptime" },
+  { isCompliance: true, label: "Compliant" },
+  { value: "100+", label: "Countries" },
 ];
 
 export default function StatsSection() {
   return (
     <div className="px-6 py-20 bg-white">
       <div className="max-w-7xl mx-auto">
-        
         {/* Rounded Container */}
-        <div className="bg-[#FCF5FF] rounded-[48px] px-10 py-20 text-center relative overflow-hidden">
-          
+        <div className="bg-linear-to-b from-[#ffffff] via-[#f9edfa] to-[#f3e1f5] rounded-[48px] px-10 py-20 text-center relative overflow-hidden">
           {/* Heading */}
-          <h2 className="text-[55px] leading-[1.1] font-bold text-[#0f0523] max-w-4xl mx-auto mb-20">
+          <h2 className="text-[55px] leading-[1.1] font-bold text-[#0f0523] max-w-4xl mx-auto mb-12">
             Empowering global leaders <br />
             with world-class <br />
             conversation infrastructure
           </h2>
 
           {/* Stats Row */}
-          <div className="flex flex-col md:flex-row items-center justify-between w-full mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center w-full mx-auto gap-12">
             {states.map((stat, i) => (
               <React.Fragment key={i}>
-
-                {i < states.length && (
-                  <div className="hidden md:block w-px h-24 bg-[#ECA0FE]/90" />
+                <div className="flex flex-row items-center justify-between gap-4">
+                  {i < states.length && (
+                  <div className="hidden md:block w-px h-24 bg-[#ECA0FE]/90 "/>
                 )}
-                <div className="flex flex-col items-start text-left py-4 w-full md:w-auto min-w-[200px]">
+                <div className="flex flex-col  items-start text-left py-4 w-full md:w-auto min-w-[200px]">
                   {stat.isCompliance ? (
                     <div className="flex items-center gap-2 mb-4 h-[60px]">
-                      <div className="bg-[#4135BF] rounded-full p-2 text-white">
-                        <ShieldCheck className="w-6 h-6" />
+                      <div className="h-8 w-8">
+                        <img src={Assets.RatingLogo1} alt="" />
                       </div>
                       <div className="bg-[#3DB9F5] rounded-full p-2 text-white">
                         <Lock className="w-6 h-6" />
@@ -49,11 +48,11 @@ export default function StatsSection() {
                       {stat.value}
                     </span>
                   )}
-                  <span className="text-[14px] font-medium text-[#ECA0FE] tracking-wide">
+                  <span className="text-[14px] font-medium text-[#d052ed] tracking-wide">
                     {stat.label}
                   </span>
                 </div>
-                
+                </div>
               </React.Fragment>
             ))}
           </div>

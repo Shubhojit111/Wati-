@@ -13,6 +13,7 @@ import Integrations from "./pages/Integrations";
 import ReviewSection from "./pages/ReviewSection";
 
 import Navbar from "./pages/Navbar";
+import Footer from "./pages/Footer";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
       <TestimonialSection />
       <PricingSection />
       <ReviewSection />
+      <Footer />
     </div>
   );
 };

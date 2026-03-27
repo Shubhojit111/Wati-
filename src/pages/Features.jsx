@@ -5,17 +5,17 @@ const tabs = [
   {
     id: "marketing",
     label: "Marketing",
-    video: Assets.marketingVideo,
+    video: Assets.MarketingVideo,
   },
   {
     id: "sales",
     label: "Sales",
-    video: Assets.salesVideo,
+    video: Assets.SalesVideo,
   },
   {
     id: "support",
     label: "Support",
-    video: Assets.supportVideo,
+    video: Assets.SupportVideo,
   },
 ];
 
@@ -27,7 +27,6 @@ export default function Features() {
   return (
     <div className="bg-white px-6">
       <div className="max-w-6xl mx-auto text-center">
-        
         {/* Tabs */}
         <div className="flex justify-center gap-28 text-[20px] font-bold pb-3">
           {tabs.map((tab) => (
@@ -35,9 +34,7 @@ export default function Features() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`relative pb-2 transition-all  ${
-                activeTab === tab.id
-                  ? "text-black"
-                  : "text-gray-500"
+                activeTab === tab.id ? "text-black" : "text-gray-500"
               }`}
             >
               {tab.label}
@@ -50,10 +47,17 @@ export default function Features() {
           ))}
         </div>
 
-   
         <div className="flex justify-center">
           <div className="relative rounded-2xl overflow-hidden ">
-            <video key={activeVideo} src={activeVideo} autoPlay loop muted playsInline className=" w-full h-full object-cover transition-opacity duration-500 ease-in-out"></video>
+            <video
+              key={activeVideo}
+              src={activeVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className=" w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+            ></video>
 
             <div className="absolute inset-0 pointer-events-none rounded-2xl ring-1 ring-black/10"></div>
           </div>

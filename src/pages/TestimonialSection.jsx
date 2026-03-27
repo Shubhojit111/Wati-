@@ -2,50 +2,41 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import TestimonialCard from "../components/TestimonialCard";
+import Assets from "../assets/Assets";
 
 const testimonialData = [
   {
-    logo: "https://www.wati.io/wp-content/uploads/2023/10/Habuild_Logo.png",
+    logo: "https://www.wati.io/wp-content/uploads/2025/09/client-logo-5-en.png",
     title: "90% of Habuild's new users come from workflows",
     quote:
-      "Wati gave us the personalised connection we were missing, enabling us to foster a more engaged and trusting community. The platform's flexibility, automations, and customisation helped us enhance user engagement, stay connected with our customers, and build trust. The switch to Wati resulted in noticeable revenue growth.",
-    avatar: "https://www.wati.io/wp-content/uploads/2023/10/Anshul-Agrawal.png",
+      "Wati gave us the personalised connection we were missing, enabling us to foster a more engaged and trusting community. The platform’s flexibility, automations, and customisation helped us enhance user engagement, stay connected with our customers, and build trust. The switch to Wati resulted in noticeable revenue growth.",
+    avatar: Assets.TestimonialPerson1,
     name: "Anshul Agrawal",
     role: "Co-founder",
     bgImage:
-      "https://www.wati.io/wp-content/uploads/2025/08/testimonial-bg1.webp",
+      Assets.TestimonialBg1,
   },
   {
-    logo: "https://www.wati.io/wp-content/uploads/2023/10/Vedantu_Logo.png",
+    logo: "https://www.wati.io/wp-content/uploads/2025/09/client-logo-4-en.png",
     title: "Automated 100% student lifecycle",
     quote:
       "Transitioning to Wati was a seamless experience, thanks to the excellent customer support. Wati's automations & chatbots have made us extremely dependable on them to streamline so many different processes throughout our students' learning journey. What began with one account has now expanded to six accounts to meet different team requirements.",
-    avatar:
-      "https://www.wati.io/wp-content/uploads/2023/10/Ashwani-Agarwal.png",
+    avatar: Assets.TestimonialPerson2,
     name: "Ashwani Agarwal",
     role: "Chief of Staff",
-    bgImage: "https://www.wati.io/wp-content/uploads/2023/10/vedantu-bg.webp",
+    bgImage: Assets.TestimonialBg2,
   },
   {
-    logo: "https://www.wati.io/wp-content/uploads/2023/10/Oyo_Logo.png",
+    logo: "https://www.wati.io/wp-content/uploads/2025/09/client-logo-2-en.png",
     title: "Increased booking conversions by 15%",
     quote:
-      "With Wati, we could reach our customers globally and provide them with real-time updates on their bookings. The integration with our CRM was seamless.",
-    avatar: "https://www.wati.io/wp-content/uploads/2023/10/oyo-avatar.png",
+      "We’ve transformed how we reach and retain customers. Wati helped us build a WhatsApp-first experience that’s fast, scalable, and incredibly convenient for our users.",
+    avatar: Assets.TestimonialPerson3,
     name: "Ritesh Agarwal",
     role: "Founder & CEO",
-    bgImage: "https://www.wati.io/wp-content/uploads/2023/10/oyo-bg.webp",
+    bgImage: Assets.TestimonialBg3,
   },
-  {
-    logo: "https://www.wati.io/wp-content/uploads/2023/10/Habuild_Logo.png",
-    title: "Demo Card 4: Scaling Customer Support",
-    quote:
-      "Testing the fourth card for uniform height and width. This content is placeholder to ensure the layout remains consistent across all slides in the testimonial section.",
-    avatar: "https://www.wati.io/wp-content/uploads/2023/10/Anshul-Agrawal.png",
-    name: "Demo User",
-    role: "Product Manager",
-    bgImage: "https://www.wati.io/wp-content/uploads/2023/10/habuild-bg.webp",
-  },
+
 ];
 
 export default function TestimonialSection() {
